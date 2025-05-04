@@ -1,0 +1,76 @@
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Benchmark\package.scala:31:17: not found: value transformToParD[0m
+[0m[[0m[31merror[0m] [0m[0m    val m1parD= transformToParD(m1)[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Benchmark\package.scala:32:17: not found: value transformToParD[0m
+[0m[[0m[31merror[0m] [0m[0m    val m2parD= transformToParD(m2)[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Benchmark\package.scala:43:47: not found: value multMatrizParD[0m
+[0m[[0m[31merror[0m] [0m[0m    ) withWarmer(new Warmer.Default) measure {multMatrizParD(m1parD,m2parD)}[0m
+[0m[[0m[31merror[0m] [0m[0m                                              ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Benchmark\package.scala:50:13: not found: value vectorAlAzar[0m
+[0m[[0m[31merror[0m] [0m[0m    val v1= vectorAlAzar(n,2)[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Benchmark\package.scala:51:13: not found: value vectorAlAzar[0m
+[0m[[0m[31merror[0m] [0m[0m    val v2= vectorAlAzar(n,2)[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:24:25: not found: type ParVector[0m
+[0m[[0m[31merror[0m] [0m[0m  def prodPuntoParD(v1: ParVector[Int], v2: ParVector[Int]): Int = {[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:24:45: not found: type ParVector[0m
+[0m[[0m[31merror[0m] [0m[0m  def prodPuntoParD(v1: ParVector[Int], v2: ParVector[Int]): Int = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                            ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:30:52: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def multMatriz(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:35:55: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def multMatrizPar(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:40:62: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def subMatriz(m: Matriz, i: Int, j: Int, l: Int): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                             ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:47:51: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def sumMatriz(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:54:55: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def multMatrizRec(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:61:58: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def multMatrizRecPar(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:68:53: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def restaMatriz(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:75:54: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def multStrassen(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                     ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:82:57: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def multStrassenPar(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m16 errors found[0m
