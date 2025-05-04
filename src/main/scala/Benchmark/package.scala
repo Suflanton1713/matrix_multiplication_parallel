@@ -46,24 +46,24 @@ package object Benchmark {
     (timeA1.value, timeA2.value, speedUp)
   }
 */
-  def compararProdPunto(n:Int) = {
-    // Para probar con paralelismo de datos
-    val v1= vectorAlAzar(n,2)
-    val v2= vectorAlAzar(n,2)
-    val v1parD= v1.par
-    val v2parD= v2.par
-    val timeA1 = config(
-      KeyValue(Key.exec.minWarmupRuns -> 20),
-      KeyValue(Key.exec.maxWarmupRuns -> 60),
-      KeyValue(Key.verbose -> false)
-    ) withWarmer(new Warmer.Default) measure {prodPunto(v1,v2)}
-
-    val timeA2 = config(
-      KeyValue(Key.exec.minWarmupRuns -> 20),
-      KeyValue(Key.exec.maxWarmupRuns -> 60),
-      KeyValue(Key.verbose -> false)
-    ) withWarmer(new Warmer.Default) measure {prodPuntoParD(v1parD,v2parD)}
-    val speedUp= timeA1.value/timeA2.value
-    (timeA1.value, timeA2.value, speedUp)
-  }
+//  def compararProdPunto(n:Int) = {
+//    // Para probar con paralelismo de datos
+//    val v1= vectorAlAzar(n,2)
+//    val v2= vectorAlAzar(n,2)
+//    val v1parD= v1.par
+//    val v2parD= v2.par
+//    val timeA1 = config(
+//      KeyValue(Key.exec.minWarmupRuns -> 20),
+//      KeyValue(Key.exec.maxWarmupRuns -> 60),
+//      KeyValue(Key.verbose -> false)
+//    ) withWarmer(new Warmer.Default) measure {prodPunto(v1,v2)}
+//
+//    val timeA2 = config(
+//      KeyValue(Key.exec.minWarmupRuns -> 20),
+//      KeyValue(Key.exec.maxWarmupRuns -> 60),
+//      KeyValue(Key.verbose -> false)
+//    ) withWarmer(new Warmer.Default) measure {prodPuntoParD(v1parD,v2parD)}
+//    val speedUp= timeA1.value/timeA2.value
+//    (timeA1.value, timeA2.value, speedUp)
+//  }
 }

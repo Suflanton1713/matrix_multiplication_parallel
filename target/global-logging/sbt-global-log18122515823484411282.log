@@ -1,0 +1,26 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(console, Some(aeb7d76f-4eb2-4c3b-b43f-ee5673fd664e), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Compile / console[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 3 Scala sources to C:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\target\scala-2.13\classes ...[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Benchmark\package.scala:51:13: not found: value vectorAlAzar[0m
+[0m[[0m[31merror[0m] [0m[0m    val v1= vectorAlAzar(n,2)[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Benchmark\package.scala:52:13: not found: value vectorAlAzar[0m
+[0m[[0m[31merror[0m] [0m[0m    val v2= vectorAlAzar(n,2)[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:157:54: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def multStrassen(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                     ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Matrices\package.scala:164:57: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Matrices.package.Matriz[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  scala.collection.immutable.Vector[Vector[Int]][0m
+[0m[[0m[31merror[0m] [0m[0m  def multStrassenPar(m1: Matriz, m2: Matriz): Matriz = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                        ^[0m
+[0m[[0m[31merror[0m] [0m[0mfour errors found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 14 s, completed 3/05/2025, 10:50:22 p. m.[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
