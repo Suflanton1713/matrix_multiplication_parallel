@@ -72,21 +72,76 @@ package object Matrices {
     // recibe m1 y m2 matrices cuadradas del mismo tamaño, potencia de 2
     // y devuelve la multiplicación de las 2 matrices
     val n = m1.length
-    val A1 = subMatriz(m1, 0, 0, n/2)
-    val A2 = subMatriz(m1, 0, n/2, n/2)
-    val A3 = subMatriz(m1, n/2, 0, n/2)
-    val A4 = subMatriz(m1, n/2, n/2, n/2)
-    val B1 = subMatriz(m1, 0, 0, n/2)
-    val B2 = subMatriz(m1, 0, 0, n/2)
-    val B3 = subMatriz(m1, 0, 0, n/2)
-    val B4 = subMatriz(m1, 0, 0, n/2)
+    val indiceMed = n/2
+    val a11 = subMatriz(m1, 0, 0, indiceMed)
+    val a12 = subMatriz(m1, 0, indiceMed, indiceMed)
+    val a21 = subMatriz(m1, indiceMed, 0, indiceMed)
+    val a22 = subMatriz(m1, indiceMed, indiceMed, indiceMed)
 
+    val b11 = subMatriz(m2, 0, 0, indiceMed)
+    val b12 = subMatriz(m2, 0, indiceMed, indiceMed)
+    val b21 = subMatriz(m2, indiceMed, 0, indiceMed)
+    val b22 = subMatriz(m2, indiceMed, indiceMed, indiceMed)
+
+    val c11 = sumMatriz(multMatrizRec(a11, b11), multMatrizRec(a12, b21))
+    val c12 = sumMatriz(multMatrizRec(a11, b12), multMatrizRec(a12, b22))
+    val c21 = sumMatriz(multMatrizRec(a21, b11), multMatrizRec(a22, b21))
+    val c22 = sumMatriz(multMatrizRec(a21, b12), multMatrizRec(a22, b22))
+
+
+    (c11 zip c12).map { case (fila1, fila2) => fila1 ++ fila2 } ++
+      (c21 zip c22).map { case (fila1, fila2) => fila1 ++ fila2 }
   }
 
   // Ejercicio 1.2.4
   def multMatrizRecPar(m1: Matriz, m2: Matriz): Matriz = {
     // recibe m1 y m2 matrices cuadradas del mismo tamaño, potencia de 2
     // y devuelve la multiplicación de las 2 matrices, en paralelo
+    val n = m1.length
+    val umbral = 32
+      if(n<umbral){
+        multMatrizRec(m1,m2)
+      }else{
+        val indiceMed = n/2
+        val a11 = subMatriz(m1, 0, 0, indiceMed)
+        val a12 = subMatriz(m1, 0, indiceMed, indiceMed)
+        val a21 = subMatriz(m1, indiceMed, 0, indiceMed)
+        val a22 = subMatriz(m1, indiceMed, indiceMed, indiceMed)
+
+        val b11 = subMatriz(m2, 0, 0, indiceMed)
+        val b12 = subMatriz(m2, 0, indiceMed, indiceMed)
+        val b21 = subMatriz(m2, indiceMed, 0, indiceMed)
+        val b22 = subMatriz(m2, indiceMed, indiceMed, indiceMed)
+
+        // 1. Lanzamos 8 multiplicaciones recursivas como tareas paralelas
+        val t1 = task { multMatrizRecPar(a11, b11) }
+        val t2 = task { multMatrizRecPar(a12, b21) }
+        val t3 = task { multMatrizRecPar(a11, b12) }
+        val t4 = task { multMatrizRecPar(a12, b22) }
+        val t5 = task { multMatrizRecPar(a21, b11) }
+        val t6 = task { multMatrizRecPar(a22, b21) }
+        val t7 = task { multMatrizRecPar(a21, b12) }
+        val t8 = task { multMatrizRecPar(a22, b22) }
+
+        // 2. Luego, paralelizamos las sumas usando parallel (estructurado)
+        val (c11, c12, c21, c22) = parallel(
+          sumMatriz(t1.join(), t2.join()),
+          sumMatriz(t3.join(), t4.join()),
+          sumMatriz(t5.join(), t6.join()),
+          sumMatriz(t7.join(), t8.join())
+        )
+
+        /*
+        val (c11,c12,c21,c22) = parallel(sumMatriz(multMatrizRecPar(a11, b11), multMatrizRecPar(a12, b21)),
+        sumMatriz(multMatrizRecPar(a11, b12), multMatrizRecPar(a12, b22)),
+        sumMatriz(multMatrizRecPar(a21, b11), multMatrizRecPar(a22, b21)),
+        sumMatriz(multMatrizRecPar(a21, b12), multMatrizRecPar(a22, b22)))
+*/
+
+        (c11 zip c12).map { case (fila1, fila2) => fila1 ++ fila2 } ++
+          (c21 zip c22).map { case (fila1, fila2) => fila1 ++ fila2 }
+
+    }
 
   }
 
