@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="root [file:/C:/Users/lialq/IdeaProjects/matrix_multiplication_parallel/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="root [file:/C:/Users/mjsaa/OneDrive/Escritorio/Proyectos%20en%20Scala/reconocimientoDePatrones/matrix_multiplication_parallel/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+  <component name="DisplayModuleName">
+    <option name="name" value="matrix_multiplication_parallel" />
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
     <output url="file://$MODULE_DIR$/../../target/scala-3.3.5/classes" />
     <output-test url="file://$MODULE_DIR$/../../target/scala-3.3.5/test-classes" />
@@ -12,7 +15,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: scala-sdk-3.3.5" level="project" />
-    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.15:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala3-library_3:3.3.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.15:jar" level="project" />
   </component>
 </module>
