@@ -1,0 +1,14 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(console, Some(5db242b3-acd9-4044-b36a-c31ccac0e8b3), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Compile / console[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 3 Scala sources to C:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\target\scala-2.13\classes ...[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Benchmark\package.scala:51:13: not found: value vectorAlAzar[0m
+[0m[[0m[31merror[0m] [0m[0m    val v1= vectorAlAzar(n,2)[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\lialq\IdeaProjects\matrix_multiplication_parallel\src\main\scala\Benchmark\package.scala:52:13: not found: value vectorAlAzar[0m
+[0m[[0m[31merror[0m] [0m[0m    val v2= vectorAlAzar(n,2)[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 2 s, completed 3/05/2025, 10:50:45 p. m.[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m

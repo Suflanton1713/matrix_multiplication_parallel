@@ -152,6 +152,7 @@ package object Matrices {
     val n = m1.length
     Vector.tabulate(n,n) ((i,j) => m1(i)(j) -m2(i)(j))
   }
+  /*
 
   // Ejercicio 1.3.2
   def multStrassen(m1: Matriz, m2: Matriz): Matriz = {
@@ -165,5 +166,5 @@ package object Matrices {
     // recibe m1 y m2 matrices cuadradas del mismo tamaño, potencia de 2
     // y devuelve la multiplicación en paralelo de las 2 matrices usando el algoritmo de Strassen
 
-  }
+  }*/
 }
