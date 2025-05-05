@@ -13,6 +13,14 @@ package object Matrices {
     v
   }
 
+  def vectorAlAzar(long: Int, vals: Int): Vector[Int] = {
+    // Crea un vector de enteros de longitud 'long',
+    // con valores aleatorios entre 0 y 'vals'
+    val v = Vector.fill(long)(scala.util.Random.nextInt(vals))
+    v
+  }
+
+
   def transpuesta(m: Matriz): Matriz = {
     val l = m.length
     Vector.tabulate(l, l)((i, j) => m(j)(i))
@@ -31,7 +39,16 @@ package object Matrices {
   def multMatriz(m1: Matriz, m2: Matriz): Matriz = {
     val n = m1.length
     val m2T = transpuesta(m2)
-    Vector.tabulate(n, n)((i, j) => prodPunto(m1(i), m2T(j)))
+    val mitad = n / 2
+
+    // Creamos dos tareas paralelas, cada una calcula media matriz
+    val (parte1, parte2) =(
+      Vector.tabulate(mitad, n)((i, j) => prodPunto(m1(i), m2T(j))),
+      Vector.tabulate(n - mitad, n)((i, j) => prodPunto(m1(i + mitad), m2T(j)))
+    )
+
+    // Concatenamos ambas mitades verticalmente
+    parte1 ++ parte2
   }
 
   // Ejercicio 1.1.2
@@ -104,55 +121,51 @@ package object Matrices {
     val n = m1.length
     if (n == 1) {
       Vector(Vector(m1(0)(0) * m2(0)(0)))
-    } else {
-      val umbral = 32
-      if (n < umbral) {
-        multMatrizRec(m1, m2)
-      } else {
-        val indiceMed = n / 2
-        val a11 = subMatriz(m1, 0, 0, indiceMed)
-        val a12 = subMatriz(m1, 0, indiceMed, indiceMed)
-        val a21 = subMatriz(m1, indiceMed, 0, indiceMed)
-        val a22 = subMatriz(m1, indiceMed, indiceMed, indiceMed)
+    }else {
+      val indiceMed = n / 2
+      val a11 = subMatriz(m1, 0, 0, indiceMed)
+      val a12 = subMatriz(m1, 0, indiceMed, indiceMed)
+      val a21 = subMatriz(m1, indiceMed, 0, indiceMed)
+      val a22 = subMatriz(m1, indiceMed, indiceMed, indiceMed)
 
-        val b11 = subMatriz(m2, 0, 0, indiceMed)
-        val b12 = subMatriz(m2, 0, indiceMed, indiceMed)
-        val b21 = subMatriz(m2, indiceMed, 0, indiceMed)
-        val b22 = subMatriz(m2, indiceMed, indiceMed, indiceMed)
+      val b11 = subMatriz(m2, 0, 0, indiceMed)
+      val b12 = subMatriz(m2, 0, indiceMed, indiceMed)
+      val b21 = subMatriz(m2, indiceMed, 0, indiceMed)
+      val b22 = subMatriz(m2, indiceMed, indiceMed, indiceMed)
 
-        // 1. Lanzamos 8 multiplicaciones recursivas como tareas paralelas
-        val t1 = task {
-          multMatrizRecPar(a11, b11)
-        }
-        val t2 = task {
-          multMatrizRecPar(a12, b21)
-        }
-        val t3 = task {
-          multMatrizRecPar(a11, b12)
-        }
-        val t4 = task {
-          multMatrizRecPar(a12, b22)
-        }
-        val t5 = task {
-          multMatrizRecPar(a21, b11)
-        }
-        val t6 = task {
-          multMatrizRecPar(a22, b21)
-        }
-        val t7 = task {
-          multMatrizRecPar(a21, b12)
-        }
-        val t8 = task {
-          multMatrizRecPar(a22, b22)
-        }
+      // 1. Lanzamos 8 multiplicaciones recursivas como tareas paralelas
+      val t1 = task {
+        multMatrizRecPar(a11, b11)
+      }
+      val t2 = task {
+        multMatrizRecPar(a12, b21)
+      }
+      val t3 = task {
+        multMatrizRecPar(a11, b12)
+      }
+      val t4 = task {
+        multMatrizRecPar(a12, b22)
+      }
+      val t5 = task {
+        multMatrizRecPar(a21, b11)
+      }
+      val t6 = task {
+        multMatrizRecPar(a22, b21)
+      }
+      val t7 = task {
+        multMatrizRecPar(a21, b12)
+      }
+      val t8 = task {
+        multMatrizRecPar(a22, b22)
+      }
 
-        // 2. Luego, paralelizamos las sumas usando parallel (estructurado)
-        val (c11, c12, c21, c22) = parallel(
-          sumMatriz(t1.join(), t2.join()),
-          sumMatriz(t3.join(), t4.join()),
-          sumMatriz(t5.join(), t6.join()),
-          sumMatriz(t7.join(), t8.join())
-        )
+      // 2. Luego, paralelizamos las sumas usando parallel (estructurado)
+      val (c11, c12, c21, c22) = parallel(
+        sumMatriz(t1.join(), t2.join()),
+        sumMatriz(t3.join(), t4.join()),
+        sumMatriz(t5.join(), t6.join()),
+        sumMatriz(t7.join(), t8.join())
+      )
 
         /*
         val (c11,c12,c21,c22) = parallel(sumMatriz(multMatrizRecPar(a11, b11), multMatrizRecPar(a12, b21)),
@@ -161,10 +174,10 @@ package object Matrices {
         sumMatriz(multMatrizRecPar(a21, b12), multMatrizRecPar(a22, b22)))
 */
 
-        (c11 zip c12).map { case (fila1, fila2) => fila1 ++ fila2 } ++
-          (c21 zip c22).map { case (fila1, fila2) => fila1 ++ fila2 }
+      (c11 zip c12).map { case (fila1, fila2) => fila1 ++ fila2 } ++
+        (c21 zip c22).map { case (fila1, fila2) => fila1 ++ fila2 }
 
-      }
+
     }
   }
 
@@ -258,13 +271,27 @@ package object Matrices {
       val s9 = restaMatriz(a11, a21)
       val s10 = sumMatriz(b11, b12)
 
-      val p1 = task { multStrassenPar(a11, s1) }
-      val p2 = task { multStrassenPar(s2, b22) }
-      val p3 = task { multStrassenPar(s3, b11) }
-      val p4 = task { multStrassenPar(a22, s4) }
-      val p5 = task { multStrassenPar(s5, s6) }
-      val p6 = task { multStrassenPar(s7, s8) }
-      val p7 = task { multStrassenPar(s9, s10) }
+      val p1 = task {
+        multStrassenPar(a11, s1)
+      }
+      val p2 = task {
+        multStrassenPar(s2, b22)
+      }
+      val p3 = task {
+        multStrassenPar(s3, b11)
+      }
+      val p4 = task {
+        multStrassenPar(a22, s4)
+      }
+      val p5 = task {
+        multStrassenPar(s5, s6)
+      }
+      val p6 = task {
+        multStrassenPar(s7, s8)
+      }
+      val p7 = task {
+        multStrassenPar(s9, s10)
+      }
 
       val (c11, c12, c21, c22) = parallel(
         sumMatriz(restaMatriz(sumMatriz(p5.join(), p4.join()), p2.join()), p6.join()),
