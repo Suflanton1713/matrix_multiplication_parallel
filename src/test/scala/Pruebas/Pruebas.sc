@@ -44,9 +44,9 @@ import Benchmark._
 //  n
 //)
 
-val m1 = matrizAlAzar(math.pow(2, 1).toInt, 2)
-val m2 = matrizAlAzar(math.pow(2, 1).toInt, 2)
 
-compararAlgoritmos(multMatriz, multMatrizPar)(m1,m2)
+
+
+
 
 
