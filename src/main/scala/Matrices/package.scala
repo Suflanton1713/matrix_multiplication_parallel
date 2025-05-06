@@ -116,13 +116,31 @@ package object Matrices {
 
   // Ejercicio 1.2.4
   def multMatrizRecPar(m1: Matriz, m2: Matriz): Matriz = {
-    // recibe m1 y m2 matrices cuadradas del mismo tamaño, potencia de 2
-    // y devuelve la multiplicación de las 2 matrices, en paralelo
     val n = m1.length
-    if (n == 1) {
-      Vector(Vector(m1(0)(0) * m2(0)(0)))
-    }else {
+    val umbral = 16  // puedes ajustar este valor según pruebas
+
+    if (n <= umbral) {
+      // Caso base: uso de versión secuencial cuando el tamaño es pequeño
+      multMatrizRec(m1, m2)
+    } else {
       val indiceMed = n / 2
+
+
+      /*
+      val ((a11, a12, a21, a22), (b11, b12, b21, b22)) = parallel(
+        parallel(
+          subMatriz(m1, 0, 0, indiceMed),
+          subMatriz(m1, 0, indiceMed, indiceMed),
+          subMatriz(m1, indiceMed, 0, indiceMed),
+          subMatriz(m1, indiceMed, indiceMed, indiceMed)
+        ),
+        parallel(
+          subMatriz(m2, 0, 0, indiceMed),
+          subMatriz(m2, 0, indiceMed, indiceMed),
+          subMatriz(m2, indiceMed, 0, indiceMed),
+          subMatriz(m2, indiceMed, indiceMed, indiceMed)
+        )
+      )
       val a11 = subMatriz(m1, 0, 0, indiceMed)
       val a12 = subMatriz(m1, 0, indiceMed, indiceMed)
       val a21 = subMatriz(m1, indiceMed, 0, indiceMed)
@@ -133,53 +151,109 @@ package object Matrices {
       val b21 = subMatriz(m2, indiceMed, 0, indiceMed)
       val b22 = subMatriz(m2, indiceMed, indiceMed, indiceMed)
 
-      // 1. Lanzamos 8 multiplicaciones recursivas como tareas paralelas
-      val t1 = task {
-        multMatrizRecPar(a11, b11)
-      }
-      val t2 = task {
-        multMatrizRecPar(a12, b21)
-      }
-      val t3 = task {
-        multMatrizRecPar(a11, b12)
-      }
-      val t4 = task {
-        multMatrizRecPar(a12, b22)
-      }
-      val t5 = task {
-        multMatrizRecPar(a21, b11)
-      }
-      val t6 = task {
-        multMatrizRecPar(a22, b21)
-      }
-      val t7 = task {
-        multMatrizRecPar(a21, b12)
-      }
-      val t8 = task {
-        multMatrizRecPar(a22, b22)
-      }
-
-      // 2. Luego, paralelizamos las sumas usando parallel (estructurado)
-      val (c11, c12, c21, c22) = parallel(
-        sumMatriz(t1.join(), t2.join()),
-        sumMatriz(t3.join(), t4.join()),
-        sumMatriz(t5.join(), t6.join()),
-        sumMatriz(t7.join(), t8.join())
-      )
-
-        /*
-        val (c11,c12,c21,c22) = parallel(sumMatriz(multMatrizRecPar(a11, b11), multMatrizRecPar(a12, b21)),
+       val (c11, c12, c21, c22) = parallel(
+        sumMatriz(multMatrizRecPar(a11, b11), multMatrizRecPar(a12, b21)),
         sumMatriz(multMatrizRecPar(a11, b12), multMatrizRecPar(a12, b22)),
         sumMatriz(multMatrizRecPar(a21, b11), multMatrizRecPar(a22, b21)),
-        sumMatriz(multMatrizRecPar(a21, b12), multMatrizRecPar(a22, b22)))
-*/
+        sumMatriz(multMatrizRecPar(a21, b12), multMatrizRecPar(a22, b22))
+      )
+
 
       (c11 zip c12).map { case (fila1, fila2) => fila1 ++ fila2 } ++
         (c21 zip c22).map { case (fila1, fila2) => fila1 ++ fila2 }
+*/
 
+
+
+      /*
+
+      // Extraer submatrices en paralelo (8 en total)
+    val ((a11, a12, a21, a22), (b11, b12, b21, b22)) = parallel(
+      parallel(
+        subMatriz(m1, 0, 0, indiceMed),
+        subMatriz(m1, 0, indiceMed, indiceMed),
+        subMatriz(m1, indiceMed, 0, indiceMed),
+        subMatriz(m1, indiceMed, indiceMed, indiceMed)
+      ),
+      parallel(
+        subMatriz(m2, 0, 0, indiceMed),
+        subMatriz(m2, 0, indiceMed, indiceMed),
+        subMatriz(m2, indiceMed, 0, indiceMed),
+        subMatriz(m2, indiceMed, indiceMed, indiceMed)
+      )
+    )
+
+    // Multiplicaciones recursivas (8 tareas)
+    val ((m1b1, m1b2, m2b1, m2b2), (m3b1, m3b2, m4b1, m4b2)) = parallel(
+      parallel(
+        multMatrizRecPar(a11, b11), // para c11
+        multMatrizRecPar(a12, b21), // para c11
+        multMatrizRecPar(a11, b12), // para c12
+        multMatrizRecPar(a12, b22)  // para c12
+      ),
+      parallel(
+        multMatrizRecPar(a21, b11), // para c21
+        multMatrizRecPar(a22, b21), // para c21
+        multMatrizRecPar(a21, b12), // para c22
+        multMatrizRecPar(a22, b22)  // para c22
+      )
+    )
+
+    // Sumas de los productos parciales (4 tareas)
+    val (c11, c12, c21, c22) = parallel(
+      sumMatriz(m1b1, m1b2),
+      sumMatriz(m2b1, m2b2),
+      sumMatriz(m3b1, m3b2),
+      sumMatriz(m4b1, m4b2)
+    )
+
+    // Unión final de cuadrantes
+    val sup = (c11 zip c12).map { case (f1, f2) => f1 ++ f2 }
+    val inf = (c21 zip c22).map { case (f1, f2) => f1 ++ f2 }
+    sup ++ inf
+       */
+      // Submatrices
+      val a11 = subMatriz(m1, 0, 0, indiceMed)
+      val a12 = subMatriz(m1, 0, indiceMed, indiceMed)
+      val a21 = subMatriz(m1, indiceMed, 0, indiceMed)
+      val a22 = subMatriz(m1, indiceMed, indiceMed, indiceMed)
+
+      val b11 = subMatriz(m2, 0, 0, indiceMed)
+      val b12 = subMatriz(m2, 0, indiceMed, indiceMed)
+      val b21 = subMatriz(m2, indiceMed, 0, indiceMed)
+      val b22 = subMatriz(m2, indiceMed, indiceMed, indiceMed)
+
+      val ((m1b1, m1b2, m2b1, m2b2), (m3b1, m3b2, m4b1, m4b2)) = parallel(
+        parallel(
+          multMatrizRecPar(a11, b11), // para c11
+          multMatrizRecPar(a12, b21), // para c11
+          multMatrizRecPar(a11, b12), // para c12
+          multMatrizRecPar(a12, b22)  // para c12
+        ),
+        parallel(
+          multMatrizRecPar(a21, b11), // para c21
+          multMatrizRecPar(a22, b21), // para c21
+          multMatrizRecPar(a21, b12), // para c22
+          multMatrizRecPar(a22, b22)  // para c22
+        )
+      )
+
+      // Cálculo de las sumas en paralelo
+      val (c11, c12, c21, c22) = parallel(
+        sumMatriz(m1b1, m1b2),
+        sumMatriz(m2b1, m2b2),
+        sumMatriz(m3b1, m3b2),
+        sumMatriz(m4b1, m4b2)
+      )
+
+      // Combinar submatrices en la matriz final
+      val superior = (c11 zip c12).map { case (f1, f2) => f1 ++ f2 }
+      val inferior = (c21 zip c22).map { case (f1, f2) => f1 ++ f2 }
+      superior ++ inferior
 
     }
   }
+
 
   // Ejercicio 1.3.1
   def restaMatriz(m1: Matriz, m2: Matriz): Matriz = {

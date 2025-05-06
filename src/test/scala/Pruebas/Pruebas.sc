@@ -1,6 +1,13 @@
 import Matrices._
 import Benchmark._
 
+
+val m1 = matrizAlAzar(math.pow(2, 4).toInt, 2)
+val m2 = matrizAlAzar(math.pow(2, 4).toInt, 2)
+multMatrizRecPar(m1,m2)
+
+
+
 //val tamanos = List(128, 256, 512, 1024, 2048) // Puedes probar hasta 4096 o más si tu máquina lo soporta
 //
 //val resultados = for {
@@ -43,10 +50,5 @@ import Benchmark._
 //  compararAlgoritmos(multMatrizRec, multMatrizRecPar)(m1, m2),
 //  n
 //)
-
-
-
-
-
 
 
