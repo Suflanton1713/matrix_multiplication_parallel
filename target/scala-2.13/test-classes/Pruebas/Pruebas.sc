@@ -1,6 +1,22 @@
 import Matrices._
 import Benchmark._
 
+import scala.collection.compat.immutable.ArraySeq
+
+
+val algoritmosMult: ArraySeq[(Matriz,Matriz)=>Matriz] = ArraySeq(multMatriz,multMatrizPar,multMatrizRec,multMatrizRecPar,multStrassen,multStrassenPar)
+
+val m1 = matrizAlAzar(math.pow(2,1).toInt,2)
+val m2 = matrizAlAzar(math.pow(2,1).toInt,2)
+
+for (
+  i <- 0 to 5 by 2
+)yield {
+  compararAlgoritmos(
+    algoritmosMult(i),algoritmosMult(i+1)
+  )(m1,m2)
+}
+
 //val tamanos = List(128, 256, 512, 1024, 2048) // Puedes probar hasta 4096 o más si tu máquina lo soporta
 //
 //val resultados = for {
@@ -43,10 +59,5 @@ import Benchmark._
 //  compararAlgoritmos(multMatrizRec, multMatrizRecPar)(m1, m2),
 //  n
 //)
-
-val m1 = matrizAlAzar(math.pow(2, 1).toInt, 2)
-val m2 = matrizAlAzar(math.pow(2, 1).toInt, 2)
-
-compararAlgoritmos(multMatriz, multMatrizPar)(m1,m2)
 
 

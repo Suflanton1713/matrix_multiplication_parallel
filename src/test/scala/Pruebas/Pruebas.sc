@@ -1,10 +1,53 @@
 import Matrices._
 import Benchmark._
 
+import scala.collection.compat.immutable.ArraySeq
 
-val m1 = matrizAlAzar(math.pow(2, 4).toInt, 2)
-val m2 = matrizAlAzar(math.pow(2, 4).toInt, 2)
-multMatrizRecPar(m1,m2)
+
+val algoritmosMult: ArraySeq[(Matriz,Matriz)=>Matriz] = ArraySeq(multMatriz,multMatrizPar,multMatrizRec,multMatrizRecPar,multStrassen,multStrassenPar)
+
+val m1 = matrizAlAzar(math.pow(2,5).toInt,2)
+val m2 = matrizAlAzar(math.pow(2,5).toInt,2)
+//compararAlgoritmos(multMatrizRec, multMatrizRecPar)(m1,m2)
+
+
+for (
+  i <- 0 to 5 by 2
+)yield {
+  compararAlgoritmos(
+    algoritmosMult(i),algoritmosMult(i+1)
+  )(m1,m2)
+}
+for (
+  i <- 0 to 5 by 2
+)yield {
+  compararAlgoritmos(
+    algoritmosMult(i),algoritmosMult(i+1)
+  )(m1,m2)
+}
+for (
+  i <- 0 to 5 by 2
+)yield {
+  compararAlgoritmos(
+    algoritmosMult(i),algoritmosMult(i+1)
+  )(m1,m2)
+}
+for (
+  i <- 0 to 5 by 2
+)yield {
+  compararAlgoritmos(
+    algoritmosMult(i),algoritmosMult(i+1)
+  )(m1,m2)
+}
+for (
+  i <- 0 to 5 by 2
+)yield {
+  compararAlgoritmos(
+    algoritmosMult(i),algoritmosMult(i+1)
+  )(m1,m2)
+}
+
+
 
 
 
