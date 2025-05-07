@@ -1,0 +1,93 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\mjsaa\AppData\Local\Temp\idea.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\mjsaa\AppData\Local\Temp\idea.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.10.11 (Amazon.com Inc. Java 17.0.13)
+[debug] Load.defaultLoad until apply took 295.5306ms
+[debug]           Load.loadUnit: plugins took 196.4648ms
+[debug]           Load.loadUnit: defsScala took 0.6297ms
+[debug] [Loading] Scanning directory C:\Users\mjsaa\OneDrive\Escritorio\Proyectos en Scala\reconocimientoDePatrones\matrix_multiplication_parallel\project
+[debug]             Load.loadUnit: mkEval took 24.9695ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\mjsaa\OneDrive\Escritorio\Proyectos en Scala\reconocimientoDePatrones\matrix_multiplication_parallel\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 40.6645 ms
+[info] loading settings for project matrix_multiplication_parallel-build from idea.sbt...
+[debug]               Load.resolveProject(matrix_multiplication_parallel-build) took 172.2697ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id matrix_multiplication_parallel-build, base: C:\Users\mjsaa\OneDrive\Escritorio\Proyectos en Scala\reconocimientoDePatrones\matrix_multiplication_parallel\project, plugins: List(<none>))) took 261.801ms
+[debug] [Loading] Done in C:\Users\mjsaa\OneDrive\Escritorio\Proyectos en Scala\reconocimientoDePatrones\matrix_multiplication_parallel\project, returning: (matrix_multiplication_parallel-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 7722.9544ms
+[debug]           Load.loadUnit: cleanEvalClasses took 102.5393ms
+[debug]         Load.loadUnit(file:/C:/Users/mjsaa/OneDrive/Escritorio/Proyectos%20en%20Scala/reconocimientoDePatrones/matrix_multiplication_parallel/project/, ...) took 8036.3961ms
+[debug]       Load.apply: load took 8356.9109ms
+[debug]       Load.apply: resolveProjects took 16.4659ms
+[debug]       Load.apply: finalTransforms took 161.4413ms
+[debug]       Load.apply: config.delegates took 12.4612ms
+[debug]       Load.apply: Def.make(settings)... took 1018.9474ms
+[debug]       Load.apply: structureIndex took 313.1624ms
+[debug]       Load.apply: mkStreams took 2.8138ms
+[info] loading project definition from C:\Users\mjsaa\OneDrive\Escritorio\Proyectos en Scala\reconocimientoDePatrones\matrix_multiplication_parallel\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 14011.0958ms
+[debug]     Load.loadUnit: defsScala took 0.0031ms
+[debug] [Loading] Scanning directory C:\Users\mjsaa\OneDrive\Escritorio\Proyectos en Scala\reconocimientoDePatrones\matrix_multiplication_parallel
+[debug]       Load.loadUnit: mkEval took 0.9774ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.SemanticdbPlugin,sbt.plugins.JUnitXmlReportPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 3.0012 ms
+[info] loading settings for project root from build.sbt...
+[debug]         Load.resolveProject(root) took 40.5699ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: C:\Users\mjsaa\OneDrive\Escritorio\Proyectos en Scala\reconocimientoDePatrones\matrix_multiplication_parallel, plugins: List(<none>))) took 45.6031ms
+[debug] [Loading] Done in C:\Users\mjsaa\OneDrive\Escritorio\Proyectos en Scala\reconocimientoDePatrones\matrix_multiplication_parallel, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 2670.3616ms
+[debug]     Load.loadUnit: cleanEvalClasses took 46.553ms
+[debug]   Load.loadUnit(file:/C:/Users/mjsaa/OneDrive/Escritorio/Proyectos%20en%20Scala/reconocimientoDePatrones/matrix_multiplication_parallel/, ...) took 16731.8848ms
+[debug] Load.apply: load took 16781.7857ms
+[debug] Load.apply: resolveProjects took 0.2212ms
+[debug] Load.apply: finalTransforms took 57.5818ms
+[debug] Load.apply: config.delegates took 0.4644ms
+[debug] Load.apply: Def.make(settings)... took 146.8052ms
+[debug] Load.apply: structureIndex took 53.7035ms
+[debug] Load.apply: mkStreams took 0.0052ms
+[info] set current project to Taller Paralelismo de Tareas y Datos (in build file:/C:/Users/mjsaa/OneDrive/Escritorio/Proyectos%20en%20Scala/reconocimientoDePatrones/matrix_multiplication_parallel/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(idea-shell, None, None)
