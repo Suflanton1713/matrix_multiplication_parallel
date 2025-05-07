@@ -127,20 +127,7 @@ package object Matrices {
 
 
       /*
-      val ((a11, a12, a21, a22), (b11, b12, b21, b22)) = parallel(
-        parallel(
-          subMatriz(m1, 0, 0, indiceMed),
-          subMatriz(m1, 0, indiceMed, indiceMed),
-          subMatriz(m1, indiceMed, 0, indiceMed),
-          subMatriz(m1, indiceMed, indiceMed, indiceMed)
-        ),
-        parallel(
-          subMatriz(m2, 0, 0, indiceMed),
-          subMatriz(m2, 0, indiceMed, indiceMed),
-          subMatriz(m2, indiceMed, 0, indiceMed),
-          subMatriz(m2, indiceMed, indiceMed, indiceMed)
-        )
-      )
+
       val a11 = subMatriz(m1, 0, 0, indiceMed)
       val a12 = subMatriz(m1, 0, indiceMed, indiceMed)
       val a21 = subMatriz(m1, indiceMed, 0, indiceMed)

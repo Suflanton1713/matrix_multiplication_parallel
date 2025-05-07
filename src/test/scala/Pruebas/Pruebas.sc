@@ -4,7 +4,7 @@ import Benchmark._
 
 val m1 = matrizAlAzar(math.pow(2, 4).toInt, 2)
 val m2 = matrizAlAzar(math.pow(2, 4).toInt, 2)
-multMatrizRecPar(m1,m2)
+compararAlgoritmos(multMatriz,multMatrizRec)(m1,m2)
 
 
 
