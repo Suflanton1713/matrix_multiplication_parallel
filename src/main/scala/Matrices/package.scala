@@ -119,8 +119,9 @@ package object Matrices {
   // Ejercicio 1.2.4
   def multMatrizRecPar(m1: Matriz, m2: Matriz): Matriz = {
     val n = m1.length
-    if (n == 1) {
-      Vector(Vector(m1(0)(0) * m2(0)(0)))
+    val umbral = 32 // 2^5
+    if (n < umbral) {
+      multMatrizRec(m1,m2)
     } else {
 
       val indiceMed = n / 2
@@ -215,8 +216,9 @@ package object Matrices {
   }
   def multStrassenPar(m1: Matriz, m2: Matriz): Matriz = {
     val n = m1.length
-    if (n == 1) {
-      Vector(Vector(m1(0)(0) * m2(0)(0)))
+    val umbral = 16 // 2^4
+    if (n < umbral) {
+      multMatrizRec(m1,m2)
     } else {
       val mitad = n / 2
 
